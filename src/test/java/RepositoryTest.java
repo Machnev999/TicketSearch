@@ -51,9 +51,7 @@ public class RepositoryTest {
 
     @Test
     void shouldNotFoundRemoveTicket() {
-        Assertions.assertThrows(NotFoundException.class, () -> {
-            repository.removeById(9);
-        });
+        Assertions.assertThrows(NotFoundException.class, () -> repository.removeById(9));
     }
 
 

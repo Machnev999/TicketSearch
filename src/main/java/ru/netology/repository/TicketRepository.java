@@ -12,14 +12,9 @@ public class TicketRepository {
         return tickets;
     }
 
-    public void setTickets(Ticket[] tickets) {
-        this.tickets = tickets;
-    }
-
     public Ticket[] findAll() {
         return tickets;
     }
-
 
 
     public Ticket findById(int id) {
@@ -31,19 +26,15 @@ public class TicketRepository {
         return null;
     }
 
-    public void add (Ticket ticket) {
-            Ticket[] tmp = new Ticket[tickets.length + 1];
-            for (int i = 0; i < tickets.length; i++) {
-                tmp[i] = tickets[i];
-            }
-            tmp[tmp.length - 1] = ticket;
-            tickets = tmp;
-        }
+    public void add(Ticket ticket) {
+        Ticket[] tmp = new Ticket[tickets.length + 1];
+        System.arraycopy(tickets, 0, tmp, 0, tickets.length);
+        tmp[tmp.length - 1] = ticket;
+        tickets = tmp;
+    }
 
 
-
-
-    public Ticket[] removeById(int id) {
+    public void removeById(int id) {
         if (findById(id) == null) {
             throw new NotFoundException(
 
@@ -60,10 +51,9 @@ public class TicketRepository {
             }
         }
         tickets = tmp;
-        return tickets;
     }
 
-    }
+}
 
 
 

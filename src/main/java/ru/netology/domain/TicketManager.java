@@ -17,14 +17,6 @@ public class TicketManager {
         this.repository = repository;
     }
 
-    public TicketRepository getRepository() {
-        return repository;
-    }
-
-    public void setRepository(TicketRepository repository) {
-        this.repository = repository;
-    }
-
     public Ticket[] getTickets() {
         return repository.getTickets();
     }
@@ -35,20 +27,12 @@ public class TicketManager {
 
     // сравниваю объект вводимого значения аэропорт вылета
     public boolean matchesDeparture(Ticket ticket, String departureAirport) {
-        if (ticket.getDepartureAirport().equals(departureAirport)) {
-            return true;
-        } else {
-            return false;
-        }
+        return ticket.getDepartureAirport().equals(departureAirport);
     }
 
     // сравниваю объект вводимого значения аэропорт прилета
     public boolean matchesArrival(Ticket ticket, String arrivalAirport) {
-        if (ticket.getArrivalAirport().equals(arrivalAirport)) {
-            return true;
-        } else {
-            return false;
-        }
+        return ticket.getArrivalAirport().equals(arrivalAirport);
     }
 
     // создаю метод,который возвращает массив , который содержит данные фром и ту
@@ -59,9 +43,7 @@ public class TicketManager {
 
             if (matchesDeparture(ticket, from)) {  // аэропорт вылета
                 if (matchesArrival(ticket, to)) { // прилета
-                    for (int i = 0; i < result.length; i++) {
-                        tmp[i] = result[i];
-                    }
+                    System.arraycopy(result, 0, tmp, 0, result.length);
                     tmp[tmp.length - 1] = ticket;
                     result = tmp;
                 }
