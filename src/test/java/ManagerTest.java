@@ -31,56 +31,58 @@ public class ManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-@Test
-    public void shouldAllTickets () {
-    manager.add(ticket1);
-    manager.add(ticket2);
-    manager.add(ticket3);
-    manager.add(ticket4);
-    manager.add(ticket5);
-    manager.add(ticket6);
+    @Test
+    public void shouldAllTickets() {
+        manager.add(ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
 
-Ticket [] expected = {ticket1,ticket2,ticket3,ticket4,ticket5,ticket6};
-Ticket [] actual = repository.findAll();
+        Ticket[] expected = {ticket1, ticket2, ticket3, ticket4, ticket5, ticket6};
+        Ticket[] actual = repository.findAll();
 
-Assertions.assertArrayEquals(expected,actual);
-}
-@Test
-    public void shouldTicketFromEqualsAirportTransfer () {
-    manager.add(ticket1);
-    manager.add(ticket2);
-    manager.add(ticket3);
-    manager.add(ticket4);
-    manager.add(ticket5);
-    manager.add(ticket6);
-
-    Ticket[] expected = {ticket1,ticket5};
-    Ticket [] actual = manager.findAll("DME", "SVO");
-
-    Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
-@Test
-    public void shouldNoOneTickets () {
+    @Test
+    public void shouldTicketFromEqualsAirportTransfer() {
+        manager.add(ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+
+        Ticket[] expected = {ticket1, ticket5};
+        Ticket[] actual = manager.findAll("DME", "SVO");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNoOneTickets() {
 
         Ticket[] expected = {};
-        Ticket [] actual = manager.findAll("SVO", "SVO");
+        Ticket[] actual = manager.findAll("SVO", "SVO");
 
-        Assertions.assertArrayEquals(expected,actual);
-}
-@Test
-    public void shouldTicketsFindAllSortFromMinToMaxPrice (){
-    manager.add(ticket1);
-    manager.add(ticket2);
-    manager.add(ticket3);
-    manager.add(ticket4);
-    manager.add(ticket5);
-    manager.add(ticket6);
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
-        Ticket [] expected = {ticket6,ticket4,ticket2};
-        Ticket [] actual = manager.findAll("OGZ","LED");
+    @Test
+    public void shouldTicketsFindAllSortFromMinToMaxPrice() {
+        manager.add(ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
 
-        Assertions.assertArrayEquals(expected,actual);
-}
+        Ticket[] expected = {ticket6, ticket4, ticket2};
+        Ticket[] actual = manager.findAll("OGZ", "LED");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
 }

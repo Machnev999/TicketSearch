@@ -43,11 +43,11 @@ public class TicketRepository {
         }
         int length = tickets.length - 1;
         Ticket[] tmp = new Ticket[length];
-        int copyToindex = 0;
+        int copyToIndex = 0;
         for (Ticket ticket : tickets) {
             if (ticket.getId() != id) {
-                tmp[copyToindex] = ticket;
-                copyToindex++;
+                tmp[copyToIndex] = ticket;
+                copyToIndex++;
             }
         }
         tickets = tmp;
